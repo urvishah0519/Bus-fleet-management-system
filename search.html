@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Bus Details</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      padding: 10px 0;
+      line-height: 1.2rem;
+    }
+
+</style>
+</head>
+
+<body>
+  <form id="search-bus">
+    <label for="search">Search:</label>
+    <input type="text" name="search" id="search">
+    <button name="search_btn">Search</button>
+    <button name="reset" type="reset">Reset</button>
+  </form>
+  
+  <div id="app"></div>
+</body>
+<script>
+    
+  var bus = 
+[
+{"S":"1","ROUTE_NUM":"2","ROUTE":"AYNAVARAM","VEH_NUM":"TN 23 CC 9535","LINK":"https://tinyurl.com/jtdsw3s7"},
+{"S":"2","ROUTE_NUM":"2A","ROUTE":"AYNAVARAM","VEH_NUM":"TN 11 AM 7935","LINK":""},
+{"S":"3","ROUTE_NUM":"3","ROUTE":"ANNANAGAR ROUNDTANA","VEH_NUM":"TN 23 CA 9235","LINK":"https://tinyurl.com/5hd35jrj"},
+{"S":"4","ROUTE_NUM":"3A","ROUTE":"ANNANAGAR ROUNDTANA","VEH_NUM":"TN 23 AK 3435","LINK":""},
+{"S":"5","ROUTE_NUM":"4","ROUTE":"NOOLAMBUR","VEH_NUM":"TN 11 AM 7135","LINK":"https://tinyurl.com/5ey8th46"},
+{"S":"6","ROUTE_NUM":"4A","ROUTE":"NOOLAMBUR","VEH_NUM":"TN 23 BB 4935","LINK":""},
+{"S":"7","ROUTE_NUM":"6","ROUTE":"PURASAIWALKAM","VEH_NUM":"TN 23 BB 5335","LINK":"https://tinyurl.com/3t4ekspj"},
+{"S":"8","ROUTE_NUM":"6A","ROUTE":"PURASAIWALKAM","VEH_NUM":"TN 11 AM 7335","LINK":""},
+{"S":"9","ROUTE_NUM":"7","ROUTE":"AVICHI SCHOOL","VEH_NUM":"TN 23 AM 9535","LINK":"https://tinyurl.com/2x7xm2x9"},
+{"S":"10","ROUTE_NUM":"7A","ROUTE":"AVICHI SCHOOL","VEH_NUM":"TN 23 AK 3735","LINK":""},
+{"S":"11","ROUTE_NUM":"9","ROUTE":"RAMAPURAM JUNCTION","VEH_NUM":"TN 11 AB 3835","LINK":"https://tinyurl.com/2t7j5smu"},
+{"S":"12","ROUTE_NUM":"9A","ROUTE":"RAMAPURAM JUNCTION","VEH_NUM":"TN 21 AH 2335","LINK":""},
+{"S":"13","ROUTE_NUM":"11","ROUTE":"STERLING ROAD","VEH_NUM":"TN 23 AM 9635","LINK":"https://tinyurl.com/4p7cy4ux"},
+{"S":"14","ROUTE_NUM":"11A","ROUTE":"STERLING ROAD","VEH_NUM":"TN 23 AK 4555","LINK":""},
+{"S":"15","ROUTE_NUM":"12","ROUTE":"REDHILLS","VEH_NUM":"TN 11 AH 2535","LINK":"https://tinyurl.com/3k4zry8x"},
+{"S":"16","ROUTE_NUM":"12A","ROUTE":"REDHILLS","VEH_NUM":"TN 11 AM 7535","LINK":""},
+{"S":"17","ROUTE_NUM":"16","ROUTE":"ADAYAR AAVIN","VEH_NUM":"TN23AM9235","LINK":"https://tinyurl.com/yc5h6d25"},
+{"S":"18","ROUTE_NUM":"16A","ROUTE":"ADAYAR AAVIN","VEH_NUM":"TN 21 AT 1408","LINK":""},
+{"S":"19","ROUTE_NUM":"17","ROUTE":"KUTCHERY ROAD","VEH_NUM":"TN23CC9635","LINK":"https://tinyurl.com/45w4w8z5"},
+{"S":"20","ROUTE_NUM":"17A","ROUTE":"KUTCHERY ROAD","VEH_NUM":"TN21AL4360","LINK":""},
+{"S":"21","ROUTE_NUM":"18","ROUTE":"KUNDRATHUR","VEH_NUM":"TN23AK4235","LINK":"https://tinyurl.com/ypn9ncjt"},
+{"S":"22","ROUTE_NUM":"18A","ROUTE":"KUNDRATHUR","VEH_NUM":"TN21AU7393","LINK":""},
+{"S":"23","ROUTE_NUM":"19","ROUTE":"NATRAJA THEATRE","VEH_NUM":"TN11AH2435","LINK":"https://tinyurl.com/53nwmpj5"},
+{"S":"24","ROUTE_NUM":"19A","ROUTE":"NATRAJA THEATRE","VEH_NUM":"TN21AT4843","LINK":""},
+{"S":"25","ROUTE_NUM":"20","ROUTE":"ADAYAR","VEH_NUM":"TN23AM9135","LINK":"https://tinyurl.com/mt6fxysc"},
+{"S":"26","ROUTE_NUM":"20A","ROUTE":"ADAYAR","VEH_NUM":"TN21AU1450","LINK":""},
+{"S":"27","ROUTE_NUM":"21","ROUTE":"CHENGALPATTU","VEH_NUM":"TN11AB3935","LINK":"https://tinyurl.com/26bhke4a"},
+{"S":"28","ROUTE_NUM":"21A","ROUTE":"POTHERI","VEH_NUM":"TN21AT1407","LINK":""},
+{"S":"29","ROUTE_NUM":"22","ROUTE":"MCC","VEH_NUM":"TN21AT1779","LINK":"https://tinyurl.com/2kbd23tp"},
+{"S":"30","ROUTE_NUM":"22A","ROUTE":"MCC","VEH_NUM":"TN21AT1303","LINK":""},
+{"S":"31","ROUTE_NUM":"23","ROUTE":"MOOLAKADAI","VEH_NUM":"TN23CA9135","LINK":"https://tinyurl.com/4e7cdaav"},
+{"S":"32","ROUTE_NUM":"23A","ROUTE":"MOOLAKADAI","VEH_NUM":"TN21AU0265","LINK":""},
+{"S":"33","ROUTE_NUM":"24","ROUTE":"AMMA NANA","VEH_NUM":"TN23AK4335","LINK":"https://tinyurl.com/yvyknthx"},
+{"S":"34","ROUTE_NUM":"24A","ROUTE":"AMMA NANA","VEH_NUM":"TN21AT4806","LINK":""},
+{"S":"35","ROUTE_NUM":"26","ROUTE":"SANTHOSAPURAM","VEH_NUM":"TN11AB3735","LINK":"https://tinyurl.com/5b7dwuhk"},
+{"S":"36","ROUTE_NUM":"26A","ROUTE":"SANTHOSAPURAM","VEH_NUM":"TN 21 AU 6520","LINK":""},
+{"S":"37","ROUTE_NUM":"28","ROUTE":"ICF","VEH_NUM":"TN11AH2235","LINK":"https://tinyurl.com/53f93muc"},
+{"S":"38","ROUTE_NUM":"28A","ROUTE":"ICF","VEH_NUM":"TN21AU6622","LINK":""},
+{"S":"39","ROUTE_NUM":"36","ROUTE":"MADHAVARAM ROUNDTANA","VEH_NUM":"TN21AT1481","LINK":"https://tinyurl.com/e47bec3e"},
+{"S":"40","ROUTE_NUM":"38","ROUTE":"GOLDEN FLATS","VEH_NUM":"TN 11 AM 7635","LINK":"https://tinyurl.com/msn9r3ve"},
+] 
+  
+  var render = function(data) {
+    var app = document.getElementById('app');
+    var busHTMLString = '<ul>'+
+      data.map(function(bus){
+        return '<li>'+
+                '<strong>S No.: </strong>' + bus.S + '<br/>' +
+                '<strong>ROUTE NUM: </strong>' + bus.ROUTE_NUM + '<br/>' +
+                '<strong>ROUTE: </strong>' + bus.ROUTE + '<br/>' +
+                '<strong>VEH NUM: </strong>' + bus.VEH_NUM + '<br/>' +
+                '<strong>LINK: </strong>' + bus.LINK + '<br/>' +
+              '</li>';
+      }).join('');
+      + '</ul>';
+      
+    app.innerHTML = busHTMLString;
+    
+  }
+  render(bus);
+
+  var handleSearch = function(event) {
+    event.preventDefault();
+    // Get the search terms from the input field
+    var searchTerm = event.target.elements['search'].value;
+    // Tokenize the search terms and remove empty spaces
+    var tokens = searchTerm
+                  .toLowerCase()
+                  .split(' ')
+                  .filter(function(token){
+                    return token.trim() !== '';
+                  });
+   if(tokens.length) {
+    //  Create a regular expression of all the search terms
+    var searchTermRegex = new RegExp(tokens.join('|'), 'gim');
+    var filteredList = bus.filter(function(bus){
+      // Create a string of all object values
+      var busString = '';
+      for(var key in bus) {
+        if(bus.hasOwnProperty(key) && bus[key] !== '') {
+          busString += bus[key].toString().toLowerCase().trim() + ' ';
+        }
+      }
+      // Return book objects where a match with the search regex if found
+      return busString.match(searchTermRegex);
+    });
+    // Render the search results
+    render(filteredList);
+   }
+  };
+
+
+  
+  document.addEventListener('submit', handleSearch);
+  document.addEventListener('reset', function(event){
+    event.preventDefault();
+    render(bus);
+  })
+</script>
+</html>
